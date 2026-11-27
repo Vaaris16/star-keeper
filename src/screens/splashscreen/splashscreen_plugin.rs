@@ -17,7 +17,7 @@ impl Plugin for SplashScreenPlugin {
             SplashScreenSet.run_if(in_state(GameState::SplashScreen)),
         );
         app.add_systems(OnEnter(GameState::SplashScreen), spawn_splash_screen)
-            .add_systems(Update, check_key_presses)
+            .add_systems(Update, check_key_presses.in_set(SplashScreenSet))
             .add_systems(OnExit(GameState::SplashScreen), cleanup_splash_screen);
     }
 }
